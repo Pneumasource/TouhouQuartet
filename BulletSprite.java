@@ -3,8 +3,6 @@ import java.awt.image.*;
 import java.io.*;
 import javax.imageio.*;
 import java.util.ArrayList;
-import javafx.scene.effect.ColorAdjust;
-import javafx.scene.image.ImageView;
 public class BulletSprite {
     public ArrayList<BufferedImage> GRAYSCALE = new ArrayList<>();
     BufferedImage[][][] BTABLE = new BufferedImage[60][360][50];
