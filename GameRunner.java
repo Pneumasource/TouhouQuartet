@@ -17,8 +17,8 @@ import java.awt.geom.*;
 public class GameRunner extends JPanel implements KeyListener, ActionListener {
     Bullet b;
     BulletSprite cl = new BulletSprite();
-    BufferedImage emp = ImageIO.read(new File("arrowhead.png")), 
-    blanc = ImageIO.read(new File("mediTwinkle.png")), e;
+    BufferedImage emp = cl.BTABLE[0][0][1], 
+    e;
     boolean up, down, left, right, focsus;
     int x, y, size, dy, dx, focus = 7, bw = emp.getWidth(), bh = emp.getHeight();
     double W = emp.getWidth() / 10.0, H = emp.getHeight() / 10.0, p = 0, rotation = 1;

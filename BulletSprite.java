@@ -7,56 +7,56 @@ public class BulletSprite {
     public ArrayList<BufferedImage> GRAYSCALE = new ArrayList<>();
     BufferedImage[][][] BTABLE = new BufferedImage[60][360][50];
     public BulletSprite () throws IOException {
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("amuletBig.png")), 200, 150)); //0 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("amulet.png")), 120, 90)); //1 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("arrow.png")), 125, 100)); //2 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("arrowbig.png")), 300, 225)); //3 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("/Users/jooyounglee/Desktop/Greyscale images/arrowhead.png")), 100, 75)); //4 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("roundhead.png")), 100, 75)); //5 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("sharphead.png")), 120, 90)); //6 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("avian.png")), 200, 150)); //7 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("dotBulletBlack.png")), 48, 36)); //8
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("ballOutline.png")), 100, 75)); //9
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("ballOutline.png")), 100, 75)); //10
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("bubble.png")), 300, 225)); //11
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("bubbleBlack.png")), 300, 225)); //12
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("coin.png")), 100, 75)); //13
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("comet.png")), 200, 150)); //14 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("crystal.png")), 100, 75)); //15 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("ballOutline.png")), 120, 90)); //16 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("dotBullet.png")), 48, 36)); //17
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("glowDot.png")), 96, 72)); //18
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("fire.png")), 100, 75)); //19 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("flame.png")), 120, 90)); //20 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("heart.png")), 200, 150)); //21 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("knife.png")), 140, 105)); //22 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("kunai.png")), 100, 75)); //23 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("mentos.png")), 180, 135)); //24
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("halfnote.png")), 120, 90)); //25
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("quarternote.png")), 120, 90)); //26
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("eighthnote.png")), 120, 90)); //27
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("sixteenthnote.png")), 120, 90)); //28
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("triplet.png")), 160, 120)); //29
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("sixteendouble.png")), 140, 105)); //30
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("quarterrest.png")), 120, 90)); //31
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("sixteenthrest.png")), 120, 90)); //32
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("nuke.png")), 400, 300)); //33
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("orb.png")), 200, 150)); //34
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("orbSmall.png")), 140, 105)); //35
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("shuriken.png")), 140, 105)); //36 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("spotlight.png")), 100, 75)); //37 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("star.png")), 56, 42)); //38 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("starBig.png")), 112, 84)); //39 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("starHuge.png")), 224, 168)); //40 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("starTwinkle.png")), 56, 42)); //41 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("starBigTwinkle.png")), 112, 84)); //42 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("starHugeTwinkle.png")), 224, 168)); //43 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("teardrop.png")), 100, 75)); //44 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("smolTwinkle.png")), 100, 75)); //45 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("mediTwinkle.png")), 120, 90)); //46 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("bigTwinkle.png")), 160, 120)); //47 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("hugeTwinkle.png")), 240, 180)); //48 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("wind.png")), 200, 150)); //49 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/amuletBig.png")), 200, 150)); //0 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/amulet.png")), 120, 90)); //1 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/arrow.png")), 125, 100)); //2 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/arrowbig.png")), 300, 225)); //3 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/arrowhead.png")), 100, 75)); //4 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/roundhead.png")), 100, 75)); //5 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/sharphead.png")), 120, 90)); //6 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/avian.png")), 200, 150)); //7 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/dotBulletBlack.png")), 48, 36)); //8
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/ballOutline.png")), 100, 75)); //9
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/ballOutline.png")), 100, 75)); //10
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/bubble.png")), 300, 225)); //11
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/bubbleBlack.png")), 300, 225)); //12
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/coin.png")), 100, 75)); //13
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/comet.png")), 200, 150)); //14 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/crystal.png")), 100, 75)); //15 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/ballOutline.png")), 120, 90)); //16 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/dotBullet.png")), 48, 36)); //17
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/glowDot.png")), 96, 72)); //18
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/fire1.png")), 100, 75)); //19 r.      ---
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/fireball1.png")), 120, 90)); //20 r.      ---
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/heart.png")), 200, 150)); //21 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/knife.png")), 140, 105)); //22 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/kunai.png")), 100, 75)); //23 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/mentos.png")), 180, 135)); //24
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/halfnote.png")), 120, 90)); //25
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/quarternote.png")), 120, 90)); //26
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/eighthnote.png")), 120, 90)); //27
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/sixteenthnote.png")), 120, 90)); //28
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/triplet.png")), 160, 120)); //29
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/sixteendouble.png")), 140, 105)); //30
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/quarterrest.png")), 120, 90)); //31
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/sixteenthrest.png")), 120, 90)); //32
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/nuke.png")), 400, 300)); //33
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/orb.png")), 200, 150)); //34
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/orbSmall.png")), 140, 105)); //35
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/shuriken.png")), 140, 105)); //36 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/spotlight.png")), 100, 75)); //37 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/star.png")), 56, 42)); //38 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/starBig.png")), 112, 84)); //39 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/starHuge.png")), 224, 168)); //40 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/starTwinkle.png")), 56, 42)); //41 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/starBigTwinkle.png")), 112, 84)); //42 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/starHugeTwinkle.png")), 224, 168)); //43 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/teardrop.png")), 100, 75)); //44 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/smolTwinkle.png")), 100, 75)); //45 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/mediTwinkle.png")), 120, 90)); //46 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/bigTwinkle.png")), 160, 120)); //47 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/hugeTwinkle.png")), 240, 180)); //48 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("Images/wind.png")), 200, 150)); //49 r
         //total 29 rotated imgs. OMYGOD
         for (int i = 0; i < 50; i++) {
             BufferedImage e = GRAYSCALE.get(i);
