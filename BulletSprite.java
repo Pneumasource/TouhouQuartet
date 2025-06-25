@@ -11,7 +11,7 @@ public class BulletSprite {
         GRAYSCALE.add(resizeImage(ImageIO.read(new File("amulet.png")), 120, 90)); //1 r
         GRAYSCALE.add(resizeImage(ImageIO.read(new File("arrow.png")), 125, 100)); //2 r
         GRAYSCALE.add(resizeImage(ImageIO.read(new File("arrowbig.png")), 300, 225)); //3 r
-        GRAYSCALE.add(resizeImage(ImageIO.read(new File("arrowhead.png")), 100, 75)); //4 r
+        GRAYSCALE.add(resizeImage(ImageIO.read(new File("/Users/jooyounglee/Desktop/Greyscale images/arrowhead.png")), 100, 75)); //4 r
         GRAYSCALE.add(resizeImage(ImageIO.read(new File("roundhead.png")), 100, 75)); //5 r
         GRAYSCALE.add(resizeImage(ImageIO.read(new File("sharphead.png")), 120, 90)); //6 r
         GRAYSCALE.add(resizeImage(ImageIO.read(new File("avian.png")), 200, 150)); //7 r

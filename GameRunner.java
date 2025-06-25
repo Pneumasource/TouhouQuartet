@@ -25,7 +25,7 @@ public class GameRunner extends JPanel implements KeyListener, ActionListener {
     ArrayList<Bullet> bullets = new ArrayList<>(); //ADD MINDUSTRY SPELLCARDS
     ArrayList<Rectangle> hitbox = new ArrayList<>();
     public GameRunner() throws IOException {
-        setPreferredSize(new Dimension(800,800));
+        
         Timer t = new Timer(17, this);
         size = 30;
         x = 400 - (bw / 20);
