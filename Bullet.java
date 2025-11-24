@@ -1,18 +1,9 @@
 public class Bullet {
-    public int type;
-    public int palette;
-    public double x;
-    public double y;
-    public double deg;
-    public double vel;
-    public double dx;
-    public double dy;
-    public double size;
-    public int remainingLife;
-    public int life;
-    public double delay;
+    public int type, palette, remainingLife, life, hitRadius;
+    public double x, y, deg, vel, dx, dy, size;
     public String tag;
-    public Bullet(int startx, int starty, int type, int palette, double deg, double vel, double size, int life, String tag) {
+    public boolean grazed;
+    public Bullet(int startx, int starty, int type, int palette, double deg, double vel, double size, int life, int hitRadius, String tag) {
         this.deg = deg;
         this.vel = vel;
         this.type = type;
@@ -21,6 +12,7 @@ public class Bullet {
         this.life = life;
         dx = Math.sin(Math.toRadians(deg)) * vel;
         dy = Math.cos(Math.toRadians(deg)) * vel;
+        this.hitRadius = hitRadius;
         this.tag = tag;
         this.x = startx;
         this.y = starty;
