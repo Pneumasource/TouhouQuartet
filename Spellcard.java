@@ -7,7 +7,7 @@ public abstract class Spellcard {
     }
     public abstract int[][] getPalette();
     public abstract ArrayList<Bullet> bulletRequest(int centx, int centy, int vectorx, int vectory);
-    public abstract Bullet bulletUpdate(Bullet b);
+    public abstract ArrayList<Bullet> bulletUpdate(Bullet b);
     public abstract String getSpellName();
     public abstract void updateTime();
     public Spellcard getSpellcard(int spellnum) {
@@ -23,29 +23,35 @@ public abstract class Spellcard {
     }
 }
 class SC1 extends Spellcard {
-    private double t;
-    int type = 29;
+    public double t;
+    int type = 21;
     public SC1(int difficulty) {
         super(difficulty);
     }
     public int[][] getPalette() {
-        int[][] r = {{1, type, 260, 0}, {2, type, 280, 180}, {3, type, 300, 50}};
+        int[][] r = {
+            {1, type, 260, 0, 40, 0, 100, 0}, 
+            {2, type, 280, 180, 40, 0, 100, 0}, 
+            {3, type, 300, 50, 40, 0, 100, 0}
+        };
         return r;
     }
     public ArrayList<Bullet> bulletRequest(int centx, int centy, int vectorx, int vectory) {
         ArrayList<Bullet> bullets = new ArrayList<>();
         for(int i = 0; i < 9; i++) {
-            bullets.add(new Bullet(720, 0, type, i % 3 + 1, Math.pow(t, 1.5) + 90 * Math.pow(-1, i) + i, 3, 3, 400, 6, "" + i));
+            bullets.add(new Bullet(720, 0, type, i % 3 + 1, Math.pow(t, 1.5) + 90 * Math.pow(-1, i) + i, 3, 3, 200, 6, "" + i));
         }
         return bullets;
     }
-    public Bullet bulletUpdate(Bullet b) {
+    public ArrayList<Bullet> bulletUpdate(Bullet b) {
+        ArrayList<Bullet> bullets = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
             if (b.tag.equals("" + i)) {
-                //b.deg += 2;
+                b.deg += 1;
             }
         }
-        return b;
+        bullets.add(b);
+        return bullets;
     }
     public String getSpellName() {
         return "Spell one";

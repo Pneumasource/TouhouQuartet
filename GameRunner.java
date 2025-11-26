@@ -15,8 +15,11 @@ public class GameRunner extends JPanel implements KeyListener, ActionListener {
     BufferedImage player = cl.BTABLE[0][0][18], bulletImg, gamerender;
     boolean up, down, left, right, focsus, bombing;
     int x, y, size, dy, dx, focus = 7, W = player.getWidth(), H = player.getHeight(), gametime = 1;
-    ArrayList<Bullet> bullets = new ArrayList<>(); //add mindustry/sol'srng/woomyarras spellcards
-    GameState gamestate = new GameState(0, 0, 1, 999, 999, 100, 1, 0);
+    ArrayList<Bullet> bullets = new ArrayList<>(), 
+    additivebullets = new ArrayList<>(),
+    playerBullets = new ArrayList<>(),
+    items = new ArrayList<>(); //add mindustry/sol'srng/woomyarras spellcards
+    GameState gamestate = new GameState(0, 0, 1, 999, 999, 100, 1, 0, 0);
     Spellcard spell = new SC1(gamestate.difficulty);
     Rectangle bound;
     public GameRunner() throws IOException {
@@ -27,7 +30,11 @@ public class GameRunner extends JPanel implements KeyListener, ActionListener {
         
         int[][] palette = spell.getPalette();
         for (int i = 0; i < palette.length; i++) {
-            cl.setPalette(palette[i][0], palette[i][1], palette[i][2], palette[i][3]);
+            cl.setPalette(palette[i][0], palette[i][1], 
+                palette[i][2], palette[i][3], 
+                palette[i][4] / 100f, palette[i][5] / 100f, 
+                palette[i][6] / 100f, palette[i][7] / 100f
+            );
         }
 
         size = 30;
@@ -70,11 +77,15 @@ public class GameRunner extends JPanel implements KeyListener, ActionListener {
         g.drawImage(player, x - W / 2, y - H / 2, (int)W, (int)H, this);
 
         for(int i = 0; i < bullets.size(); i++) {
-            bullets.set(i, spell.bulletUpdate(bullets.get(i)));
+            additivebullets = spell.bulletUpdate(bullets.get(i));
+            bullets.set(i, additivebullets.get(0));
+            for(int j = 1; j < additivebullets.size(); j++) { 
+                bullets.add(additivebullets.get(j));
+            }
             b = bullets.get(i);
             bulletImg = cl.BTABLE[b.palette][(int)(b.deg + 180) % 360][b.type];
 
-            int distance = (int)Math.sqrt(Math.pow(b.x - x, 2) + Math.pow(b.y - y, 2));
+            double distance = (int)Math.sqrt(Math.pow(b.x - x, 2) + Math.pow(b.y - y, 2));
             if (distance < 15 && !b.grazed) {
                 gamestate.graze += 1;
                 b.grazed = true;
@@ -82,7 +93,7 @@ public class GameRunner extends JPanel implements KeyListener, ActionListener {
             if (distance < b.hitRadius) {
                 gamestate.life -= 1;
             }
-            if (bombing && gamestate.bomb > 0 && distance < 200) {
+            if (bombing && gamestate.bomb > 0 && distance < gamestate.bombtime * 5 + 100) {
                 if (b.remainingLife > 29) {
                     b.remainingLife = b.life - 29;
                 }
@@ -118,6 +129,12 @@ public class GameRunner extends JPanel implements KeyListener, ActionListener {
             gamestate.bomb -= 1;
         }
 
+        g = paintUI(g);
+
+        x = Math.max((int)bound.getMinX(), Math.min(x + dx, (int)bound.getMaxX()));
+        y = Math.max((int)bound.getMinY(), Math.min(y + dy, (int)bound.getMaxY()));
+    }
+    public Graphics paintUI(Graphics g) {
         int minX = (int)bound.getMinX(), minY = (int)bound.getMinY(),
         maxX = (int)bound.getMaxX(), maxY = (int)bound.getMaxY(),
         width = (int)bound.getWidth(), height = (int)bound.getHeight();
@@ -132,6 +149,9 @@ public class GameRunner extends JPanel implements KeyListener, ActionListener {
         }
 
         g.setFont(new Font("Monospaced", Font.BOLD, 20));
+        for(int i = 0; i < 6; i++) {
+            g.fill3DRect(minX + i, minY - 40 + i, (int)((1 / (double)1) * width) - 2 * i, 30 - 2 * i, true);
+        }
         g.drawString("Life: " + gamestate.life, minX, maxY + 32);
         for(int i = 0; i < 6; i++) {
             g.fill3DRect(minX + i + 120, maxY + 10 + i, (int)(200 * (gamestate.life / 1000.0)) - 2 * i, 30 - 2 * i, true);
@@ -141,9 +161,7 @@ public class GameRunner extends JPanel implements KeyListener, ActionListener {
             g.fill3DRect(minX + i + 460, maxY + 10 + i, (int)(200 * (gamestate.bomb / 1000.0)) - 2 * i, 30 - 2 * i, true);
         }
         g.drawString("Graze: " + gamestate.graze, minX + 680, maxY + 32);
-
-        x = Math.max(minX, Math.min(x + dx, maxX));
-        y = Math.max(minY, Math.min(y + dy, maxY));
+        return g;
     }
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -161,10 +179,13 @@ public class GameRunner extends JPanel implements KeyListener, ActionListener {
             spell = spell.getSpellcard(1);
             int[][] palette = spell.getPalette();
             for (int i = 0; i < palette.length; i++) {
-                cl.setPalette(palette[i][0], palette[i][1], palette[i][2], palette[i][3]);
+                cl.setPalette(palette[i][0], palette[i][1], 
+                    palette[i][2], palette[i][3], 
+                    palette[i][4] / 100f, palette[i][5] / 100f, 
+                    palette[i][6] / 100f, palette[i][7] / 100f
+                );
             }
         }
-        //ArrayList<Bullet> bulletrequest = spell.bulletRequest((int)this.getPreferredSize().getWidth() / 2, (int)this.getPreferredSize().getHeight() / 2, x, y);
         ArrayList<Bullet> bulletrequest = spell.bulletRequest(x, y, x, y);
         for (Bullet b : bulletrequest) {
             bullets.add(b);
@@ -177,6 +198,7 @@ public class GameRunner extends JPanel implements KeyListener, ActionListener {
         }
         if (ke.getKeyCode() == KeyEvent.VK_X) {
             bombing = true;
+            gamestate.controlBombtime(bombing);
         }
         if (ke.getKeyCode() == KeyEvent.VK_UP) {
             up = true;
@@ -197,6 +219,7 @@ public class GameRunner extends JPanel implements KeyListener, ActionListener {
         }
         if (ke.getKeyCode() == KeyEvent.VK_X) {
             bombing = false;
+            gamestate.controlBombtime(bombing);
         }
         if (ke.getKeyCode() == KeyEvent.VK_UP) {
             up = false;

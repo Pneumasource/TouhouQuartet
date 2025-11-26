@@ -13,10 +13,7 @@ public class BulletSprite {
             System.out.println(i);
         }
     }
-    public void setPalette(int palette, int type, int hue, int graditude) {
-        setPaletteHSV(palette, type, hue, graditude, 0.4f, 0, 1, 0);
-    }
-    public void setPaletteHSV(int palette, int type, int hue, int graditude, float sat, float satitude, float val, float valitude) {
+    public void setPalette(int palette, int type, int hue, int graditude, float sat, float satitude, float val, float valitude) {
         for (int j = 0; j < 360; j++) {
             BTABLE[palette][j][type] = recolorImage(BTABLE[0][j][type], 
             hue + (int)(Math.cos(Math.PI * j / 180.0) * graditude),
